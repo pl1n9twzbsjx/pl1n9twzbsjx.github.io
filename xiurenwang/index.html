@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秀人网-秀人网模特图集_秀人网写真作品与套图浏览</title>
+<meta name="description" content="秀人网主题首页，汇集秀人网模特写真套图与作品信息，按模特、主题与更新节奏浏览，了解秀人网的图集内容与浏览方式。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1420'/%3E%3Ccircle cx='32' cy='26' r='10' fill='none' stroke='%23f0a6b8' stroke-width='3'/%3E%3Cpath d='M18 52c2-10 8-14 14-14s12 4 14 14' fill='none' stroke='%23f0a6b8' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#141018;
+  --bg-soft:#1d1724;
+  --panel:#241c2e;
+  --line:#3a2f46;
+  --text:#efe9f2;
+  --muted:#b3a6bd;
+  --accent:#f0a6b8;
+  --accent-2:#c9a6f0;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* 页头 */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(20,16,24,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;height:68px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:.5px}
+.logo .mark{width:34px;height:34px;flex:0 0 auto}
+.logo b{color:var(--text)}
+.logo b span{color:var(--accent)}
+nav.main{display:flex;gap:22px;font-size:15px;color:var(--muted)}
+nav.main a{position:relative;padding:4px 0;transition:color .2s}
+nav.main a:hover,nav.main a:focus{color:var(--accent)}
+nav.main a::after{
+  content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;
+  background:var(--accent);transition:width .25s;border-radius:2px;
+}
+nav.main a:hover::after,nav.main a:focus::after{width:100%}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);
+  border-radius:10px;padding:7px 11px;font-size:14px;cursor:pointer}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  padding:64px 0 56px;
+  background:
+    radial-gradient(900px 420px at 82% -10%,rgba(201,166,240,.20),transparent 62%),
+    radial-gradient(700px 380px at 8% 110%,rgba(240,166,184,.16),transparent 60%),
+    var(--bg-soft);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--accent);
+  border:1px solid rgba(240,166,184,.35);
+  background:rgba(240,166,184,.08);
+  padding:5px 12px;border-radius:999px;margin-bottom:18px;letter-spacing:.5px;
+}
+h1{
+  font-size:clamp(30px,5vw,46px);
+  line-height:1.25;font-weight:800;letter-spacing:1px;
+}
+h1 .accent{
+  background:linear-gradient(92deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{margin-top:18px;color:var(--muted);font-size:16.5px;max-width:34em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:999px;font-size:15px;font-weight:600;
+  border:1px solid transparent;transition:transform .18s,box-shadow .18s,background .18s;
+}
+.btn-primary{
+  background:linear-gradient(92deg,var(--accent),var(--accent-2));
+  color:#241c2e;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(240,166,184,.28)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.hero-stats div strong{display:block;font-size:22px;color:var(--accent)}
+.hero-stats div span{font-size:13px;color:var(--muted)}
+
+.hero-art{
+  position:relative;border-radius:22px;overflow:hidden;
+  border:1px solid var(--line);
+  background:linear-gradient(160deg,#2a2135,#1a1420);
+  padding:18px;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+.hero-art .frame{
+  border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,rgba(240,166,184,.20),rgba(201,166,240,.16));
+  border:1px dashed rgba(240,166,184,.4);
+  aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
+}
+.hero-art figcaption{
+  margin-top:14px;display:flex;justify-content:space-between;
+  font-size:13px;color:var(--muted);
+}
+.hero-art figcaption b{color:var(--accent-2);font-weight:600}
+
+/* 通用区块 */
+section.block{padding:56px 0}
+.sec-head{margin-bottom:28px}
+.sec-head .kicker{
+  font-size:13px;letter-spacing:2px;color:var(--accent-2);text-transform:uppercase;
+  display:block;margin-bottom:8px;
+}
+h2.sec-title{font-size:clamp(21px,3vw,27px);font-weight:700;letter-spacing:.5px}
+.sec-desc{margin-top:10px;color:var(--muted);max-width:46em;font-size:15.5px}
+
+/* 栏目分类卡片 */
+.topic-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.topic-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px 18px;
+  transition:transform .2s,border-color .2s,background .2s;
+}
+.topic-card:hover{transform:translateY(-4px);border-color:rgba(240,166,184,.5)}
+.topic-card .ic{
+  width:42px;height:42px;border-radius:12px;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(240,166,184,.12);color:var(--accent);
+}
+.topic-card h3{font-size:16.5px;margin-bottom:8px}
+.topic-card p{font-size:14px;color:var(--muted);line-height:1.65}
+
+/* 图集列表 */
+.gallery-tools{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  margin-bottom:22px;
+}
+.chip{
+  border:1px solid var(--line);background:var(--bg-soft);color:var(--muted);
+  padding:7px 15px;border-radius:999px;font-size:14px;cursor:pointer;
+  transition:all .18s;
+}
+.chip:hover{color:var(--text);border-color:var(--accent-2)}
+.chip.active{background:var(--accent);color:#241c2e;border-color:var(--accent);font-weight:600}
+.search-box{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+  border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+  background:var(--bg-soft);
+}
+.search-box input{
+  background:none;border:none;outline:none;color:var(--text);
+  font-size:14px;width:160px;font-family:inherit;
+}
+.search-box input::placeholder{color:#7d7089}
+.search-box svg{color:var(--muted);flex:0 0 auto}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.album{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .2s,border-color .2s;
+}
+.album:hover{transform:translateY(-4px);border-color:rgba(201,166,240,.5)}
+.album .cover{
+  aspect-ratio:3/2;
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--line);
+}
+.album .cover svg{width:60%;height:auto;opacity:.85}
+.album .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.album .tag{
+  align-self:flex-start;font-size:12px;color:var(--accent-2);
+  border:1px solid rgba(201,166,240,.35);background:rgba(201,166,240,.08);
+  padding:2px 10px;border-radius:999px;
+}
+.album h3{font-size:16px;line-height:1.5}
+.album p{font-size:13.5px;color:var(--muted);flex:1;line-height:1.65}
+.album .meta{
+  display:flex;justify-content:space-between;font-size:12.5px;color:#8b7d99;
+  border-top:1px solid var(--line);padding-top:10px;margin-top:4px;
+}
+.empty-hint{
+  display:none;text-align:center;color:var(--muted);font-size:14.5px;
+  padding:34px 0;border:1px dashed var(--line);border-radius:var(--radius);
+}
+
+/* 内容说明双栏 */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+.prose p{margin-bottom:16px;color:#d8cfdf;font-size:15.5px}
+.prose p strong{color:var(--accent)}
+.side-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px;
+}
+.side-card h3{font-size:17px;margin-bottom:14px;color:var(--accent)}
+.side-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.side-list li{
+  display:flex;gap:10px;font-size:14.5px;color:var(--muted);line-height:1.6;
+}
+.side-list li .dot{
+  flex:0 0 auto;width:7px;height:7px;border-radius:50%;
+  background:var(--accent-2);margin-top:8px;
+}
+
+/* 浏览方式 */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{
+  background:var(--bg-soft);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px 22px;
+}
+.step .num{
+  font-size:13px;font-weight:700;color:#241c2e;background:var(--accent);
+  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;
+}
+.step h3{font-size:16px;margin-bottom:8px}
+.step p{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* 下载条 */
+.download-bar{
+  margin-top:8px;
+  background:linear-gradient(100deg,rgba(240,166,184,.14),rgba(201,166,240,.12));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 30px;
+  display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
+}
+.download-bar h3{font-size:19px;margin-bottom:6px}
+.download-bar p{font-size:14px;color:var(--muted)}
+.download-bar a.btn[aria-disabled="true"]{
+  opacity:.72;cursor:default;pointer-events:none;
+}
+
+/* 页尾 */
+footer.site{
+  border-top:1px solid var(--line);
+  background:var(--bg-soft);
+  padding:44px 0 30px;
+  margin-top:20px;
+}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.foot-brand .logo{margin-bottom:12px}
+.foot-brand p{font-size:14px;color:var(--muted);max-width:30em;line-height:1.7}
+.foot-col h4{font-size:14.5px;margin-bottom:12px;color:var(--text)}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot-col a{font-size:14px;color:var(--muted)}
+.foot-col a:hover{color:var(--accent)}
+.copyright{
+  margin-top:32px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:13px;color:#8b7d99;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+
+/* 响应式 */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-art{max-width:420px;margin:0 auto}
+  .topic-grid{grid-template-columns:repeat(2,1fr)}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr;gap:26px}
+  .steps{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  body{font-size:15px}
+  nav.main{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    flex-direction:column;gap:0;
+    background:var(--bg-soft);border-bottom:1px solid var(--line);
+    padding:8px 20px 16px;
+  }
+  nav.main.open{display:flex}
+  nav.main a{padding:11px 0;border-bottom:1px solid rgba(58,47,70,.6);font-size:15px}
+  nav.main a:last-child{border-bottom:none}
+  .menu-btn{display:block}
+  .hero{padding:44px 0 40px}
+  .hero-stats{gap:20px}
+  .hero-stats div strong{font-size:19px}
+  .topic-grid{grid-template-columns:1fr 1fr}
+  .topic-card{padding:16px 14px}
+  .card-grid{grid-template-columns:1fr}
+  .search-box{width:100%;margin-left:0}
+  .search-box input{width:100%}
+  .foot-grid{grid-template-columns:1fr}
+  .download-bar{padding:22px 20px}
+  section.block{padding:42px 0}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="秀人网 首页">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#241c2e" stroke="#3a2f46"/>
+        <circle cx="32" cy="25" r="9" fill="none" stroke="#f0a6b8" stroke-width="3"/>
+        <path d="M18 50c2.5-9 8-13 14-13s11.5 4 14 13" fill="none" stroke="#c9a6f0" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <b>秀人<span>网</span></b>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">栏目</button>
+    <nav class="main" id="mainNav" aria-label="主导航">
+      <a href="#topics">图集分类</a>
+      <a href="#albums">最新套图</a>
+      <a href="#about">关于秀人网</a>
+      <a href="#browse">浏览方式</a>
+      <a href="#download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">模特写真图集 · 主题浏览</span>
+        <h1>秀人网</h1>
+        <p class="lead">秀人网是一个以模特写真套图为核心的图集站点。这里按模特、主题与更新节奏组织内容，方便你快速找到想看的套图，也便于了解每辑作品的拍摄风格与画面构成。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#albums">浏览最新套图</a>
+          <a class="btn btn-ghost" href="#topics">按分类查看</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4</strong><span>内容分类</span></div>
+          <div><strong>6</strong><span>展示套图</span></div>
+          <div><strong>持续</strong><span>更新节奏</span></div>
+        </div>
+      </div>
+      <figure class="hero-art">
+        <div class="frame">
+          <svg viewBox="0 0 200 250" aria-hidden="true">
+            <defs>
+              <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f0a6b8"/>
+                <stop offset="1" stop-color="#c9a6f0"/>
+              </linearGradient>
+            </defs>
+            <rect x="18" y="18" width="164" height="214" rx="10" fill="none" stroke="url(#hg)" stroke-width="2"/>
+            <circle cx="100" cy="92" r="26" fill="none" stroke="url(#hg)" stroke-width="3"/>
+            <path d="M62 190c6-28 20-40 38-40s32 12 38 40" fill="none" stroke="url(#hg)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M40 140h30M130 140h30" stroke="#3a2f46" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <figcaption><span>主题插画 · 写真套图</span><b>秀人网</b></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section class="block" id="topics">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Content</span>
+        <h2 class="sec-title">秀人网图集分类</h2>
+        <p class="sec-desc">按内容取向划分四类入口，每一类对应不同的拍摄主题与画面风格，便于你从熟悉的类型开始浏览。</p>
+      </div>
+      <div class="topic-grid">
+        <article class="topic-card">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/>
+            </svg>
+          </div>
+          <h3>室内写真</h3>
+          <p>以室内布光与居家场景为主，画面安静，注重人物与环境的细节关系。</p>
+        </article>
+        <article class="topic-card">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M3 18l6-7 4 4 3-3 5 6z"/><circle cx="8" cy="7" r="2"/>
+            </svg>
+          </div>
+          <h3>外景街拍</h3>
+          <p>自然光与城市背景结合，强调行走感与生活气息，套图节奏更轻快。</p>
+        </article>
+        <article class="topic-card">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M12 3l2.6 5.6L21 9.5l-4.5 4.2 1.2 6.3L12 17l-5.7 3 1.2-6.3L3 9.5l6.4-.9z"/>
+            </svg>
+          </div>
+          <h3>主题创作</h3>
+          <p>围绕单一概念做造型与色彩设计，一辑一个主题，适合整体连贯观看。</p>
+        </article>
+        <article class="topic-card">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+            </svg>
+          </div>
+          <h3>近期更新</h3>
+          <p>按上线时间排列的套图入口，方便回访时先看最新发布的那一批。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 套图列表 -->
+  <section class="block" id="albums">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Albums</span>
+        <h2 class="sec-title">秀人网套图浏览</h2>
+        <p class="sec-desc">下方为页面内展示的套图条目，可按分类筛选，也可输入模特名或主题关键词检索。条目信息仅为浏览入口，不替代完整图集。</p>
+      </div>
+
+      <div class="gallery-tools">
+        <button class="chip active" data-filter="all">全部</button>
+        <button class="chip" data-filter="indoor">室内写真</button>
+        <button class="chip" data-filter="street">外景街拍</button>
+        <button class="chip" data-filter="theme">主题创作</button>
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+          </svg>
+          <input type="search" id="albumSearch" placeholder="搜索模特或主题" aria-label="搜索套图">
+        </div>
+      </div>
+
+      <div class="card-grid" id="albumGrid">
+        <article class="album" data-cat="indoor" data-key="室内 白墙 柔光 林汐">
+          <div class="cover" style="background:linear-gradient(135deg,rgba(240,166,184,.22),rgba(201,166,240,.18))">
+            <svg viewBox="0 0 120 80" aria-hidden="true">
+              <rect x="10" y="10" width="100" height="60" rx="6" fill="none" stroke="#f0a6b8" stroke-width="2"/>
+              <circle cx="52" cy="36" r="11" fill="none" stroke="#c9a6f0" stroke-width="2"/>
+              <path d="M36 62c3-12 9-17 16-17s13 5 16 17" fill="none" stroke="#c9a6f0" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">室内写真</span>
+            <h3>白墙柔光 · 林汐</h3>
+            <p>低饱和背景配合侧向柔光，整辑以半身与特写为主，画面干净克制。</p>
+            <div class="meta"><span>室内写真</span><span>套图</span></div>
+          </div>
+        </article>
+
+        <article class="album" data-cat="street" data-key="街拍 傍晚 城市 苏晚">
+          <div class="cover" style="background:linear-gradient(135deg,rgba(201,166,240,.22),rgba(240,166,184,.14))">
+            <svg viewBox="0 0 120 80" aria-hidden="true">
+              <path d="M12 64l22-24 14 14 12-11 26 21z" fill="none" stroke="#c9a6f0" stroke-width="2"/>
+              <circle cx="30" cy="24" r="7" fill="none" stroke="#f0a6b8" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">外景街拍</span>
+            <h3>傍晚街区 · 苏晚</h3>
+            <p>利用黄昏的自然光与街道纵深，行走姿态连贯，整辑偏生活化记录。</p>
+            <div class="meta"><span>外景街拍</span><span>套图</span></div>
+          </div>
+        </article>
+
+        <article class="album" data-cat="theme" data-key="主题 复古 胶片 顾清">
+          <div class="cover" style="background:linear-gradient(135deg,rgba(240,166,184,.16),rgba(201,166,240,.24))">
+            <svg viewBox="0 0 120 80" aria-hidden="true">
+              <rect x="26" y="18" width="68" height="46" rx="6" fill="none" stroke="#f0a6b8" stroke-width="2"/>
+              <path d="M26 30h68M38 18v-6M82 18v-6" stroke="#c9a6f0" stroke-width="2"/>
+              <circle cx="60" cy="48" r="9" fill="none" stroke="#c9a6f0" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">主题创作</span>
+            <h3>复古胶片 · 顾清</h3>
+            <p>以胶片色调统一全辑，服装与道具围绕同一主题展开，前后呼应明显。</p>
+            <div class="meta"><span>主题创作</span><span>套图</span></div>
+          </div>
+        </article>
+
+        <article class="album" data-cat="indoor" data-key="室内 窗边 自然光 许棠">
+          <div class="cover" style="background:linear-gradient(135deg,rgba(201,166,240,.18),rgba(240,166,184,.2))">
+            <svg viewBox="0 0 120 80" aria-hidden="true">
+              <rect x="22" y="14" width="42" height="52" rx="4" fill="none" stroke="#f0a6b8" stroke-width="2"/>
+              <path d="M43 14v52M22 40h42" stroke="#c9a6f0" stroke-width="1.6"/>
+              <circle cx="86" cy="34" r="10" fill="none" stroke="#c9a6f0" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">室内写真</span>
+            <h3>窗边自然光 · 许棠</h3>
+            <p>依靠窗光塑造明暗层次，镜头语言简单，重点落在表情与姿态变化。</p>
+            <div class="meta"><span>室内写真</span><span>套图</span></div>
+          </div>
+        </article>
+
+        <article class="album" data-cat="street" data-key="街拍 清晨 巷口 沈知夏">
+          <div class="cover" style="background:linear-gradient(135deg,rgba(240,166,184,.2),rgba(201,166,240,.16))">
+            <svg viewBox="0 0 120 80" aria-hidden="true">
+              <path d="M14 62V30l18-10v42M50 62V20l22 10v32M86 62V34l20 8v20" fill="none" stroke="#f0a6b8" stroke-width="2"/>
+              <path d="M14 62h94" stroke="#c9a6f0" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">外景街拍</span>
+            <h3>清晨巷口 · 沈知夏</h3>
+            <p>清晨人少的巷道取景，冷调光线与暖色衣着形成对比，氛围清爽。</p>
+            <div class="meta"><span>外景街拍</span><span>套图</span></div>
+          </div>
+        </article>
+
+        <article class="album" data-cat="theme" data-key="主题 色彩 纯色 江屿">
+          <div class="cover" style="background:linear-gradient(135deg,rgba(201,166,240,.24),rgba(240,166,184,.12))">
+            <svg viewBox="0 0 120 80" aria-hidden="true">
+              <circle cx="40" cy="40" r="18" fill="none" stroke="#f0a6b8" stroke-width="2"/>
+              <circle cx="64" cy="40" r="18" fill="none" stroke="#c9a6f0" stroke-width="2"/>
+              <circle cx="52" cy="40" r="18" fill="none" stroke="#8b7d99" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">主题创作</span>
+            <h3>纯色叠影 · 江屿</h3>
+            <p>以纯色背景与色块拼接构成画面，造型统一，适合连着看完一整辑。</p>
+            <div class="meta"><span>主题创作</span><span>套图</span></div>
+          </div>
+        </article>
+      </div>
+      <p class="empty-hint" id="emptyHint">没有匹配的套图，换个关键词或切换分类再试。</p>
+    </div>
+  </section>
+
+  <!-- 关于与说明 -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">About</span>
+        <h2 class="sec-title">关于秀人网的内容组织</h2>
+        <p class="sec-desc">了解一个图集站点，先看它如何分类、如何更新、每辑套图包含什么。以下说明围绕这三点展开。</p>
+      </div>
+      <div class="split">
+        <div class="prose">
+          <p><strong>秀人网</strong>的内容主体是模特写真套图。每一辑套图通常围绕一位模特与一个拍摄主题展开，包含若干张连贯画面，从造型、场景到光线保持相对统一，因此适合整辑观看，而不是单独挑一张。</p>
+          <p>在分类上，秀人网按拍摄环境与内容取向区分室内写真、外景街拍、主题创作等方向。室内写真侧重布光与空间细节，外景街拍更依赖自然光与城市背景，主题创作则先定概念再做造型，三者观看节奏不同。</p>
+          <p>更新方面，站点以批次上线的方式补充新套图，回访时可以从“近期更新”入口先看最新一批，再按分类往回翻。这种组织方式让常看的访客不必每次从首页重新筛选，也便于对比同一模特不同时期的作品。</p>
+          <p>需要说明的是，本页展示的套图条目是浏览入口与内容索引，用于说明秀人网的组织方式，并不等同于完整图集本身。具体套图的画面数量与呈现，以对应页面为准。</p>
+        </div>
+        <aside class="side-card">
+          <h3>浏览前可以留意</h3>
+          <ul class="side-list">
+            <li><span class="dot"></span>先确定想看的方向：室内、外景还是主题创作，能明显减少翻找时间。</li>
+            <li><span class="dot"></span>同一模特的套图往往有连续的风格线索，按模特聚合观看更完整。</li>
+            <li><span class="dot"></span>套图标题中的场景与关键词，通常能反映这一辑的取景与色调。</li>
+            <li><span class="dot"></span>回访优先看近期更新，再按分类补看，顺序更接近站点实际更新。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 浏览方式 -->
+  <section class="block" id="browse">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">How to browse</span>
+        <h2 class="sec-title">在秀人网找套图的三步</h2>
+        <p class="sec-desc">从分类到检索再到整辑观看，按这个顺序通常最快定位到想看的内容。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>选定分类</h3>
+          <p>先在四类入口中挑一个方向，缩小范围。不确定时从“近期更新”开始，看最新一批的风格再决定。</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>检索与筛选</h3>
+          <p>用分类按钮配合搜索框，输入模特名或主题词，条目会即时收敛，减少逐个翻页的麻烦。</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>整辑观看</h3>
+          <p>进入单辑后按顺序看完，留意造型与光线的变化，这样更能体会一辑套图的整体设计。</p>
+        </div>
+      </div>
+
+      <div class="download-bar" id="download">
+        <div>
+          <h3>秀人网套图索引下载</h3>
+          <p>当前提供套图条目的索引文件，用于离线查看分类与标题信息；完整图集请以站点页面为准。</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top" aria-label="秀人网 首页">
+          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#241c2e" stroke="#3a2f46"/>
+            <circle cx="32" cy="25" r="9" fill="none" stroke="#f0a6b8" stroke-width="3"/>
+            <path d="M18 50c2.5-9 8-13 14-13s11.5 4 14 13" fill="none" stroke="#c9a6f0" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <b>秀人<span>网</span></b>
+        </a>
+        <p>秀人网以模特写真套图为内容主体，按分类与更新节奏组织图集，帮助访客快速找到想看的作品方向。</p>
+      </div>
+      <div class="foot-col">
+        <h4>栏目</h4>
+        <ul>
+          <li><a href="#topics">图集分类</a></li>
+          <li><a href="#albums">最新套图</a></li>
+          <li><a href="#about">关于秀人网</a></li>
+          <li><a href="#browse">浏览方式</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>内容方向</h4>
+        <ul>
+          <li><a href="#topics">室内写真</a></li>
+          <li><a href="#topics">外景街拍</a></li>
+          <li><a href="#topics">主题创作</a></li>
+          <li><a href="#albums">近期更新</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>秀人网 · 模特写真图集主题首页</span>
+      <span>本页条目为内容索引，具体图集以对应页面为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  menuBtn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A' && window.innerWidth <= 680){
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.album'));
+  var search = document.getElementById('albumSearch');
+  var emptyHint = document.getElementById('emptyHint');
+  var currentFilter = 'all';
+
+  function apply(){
+    var q = (search.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(card){
+      var cat = card.getAttribute('data-cat');
+      var key = (card.getAttribute('data-key') || '').toLowerCase();
+      var title = (card.querySelector('h3') ? card.querySelector('h3').textContent : '').toLowerCase();
+      var matchCat = currentFilter === 'all' || cat === currentFilter;
+      var matchKey = q === '' || key.indexOf(q) > -1 || title.indexOf(q) > -1;
+      var ok = matchCat && matchKey;
+      card.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    emptyHint.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+      currentFilter = chip.getAttribute('data-filter');
+      apply();
+    });
+  });
+  search.addEventListener('input', apply);
+})();
+</script>
+</body>
+              </html>
