@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51每日大赛官网首页-51每日大赛热点合集_每日大赛爆料榜单</title>
+<meta name="description" content="51每日大赛官网首页，聚合每日大赛热点内容与爆料合集，按日期浏览榜单条目，了解热门话题走向与内容更新节奏。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161922'/%3E%3Cpath d='M14 42 L26 20 L34 34 L40 24 L50 42 Z' fill='%23ffb648'/%3E%3Ccircle cx='46' cy='18' r='5' fill='%23ff5f56'/%3E%3C/svg%3E">
+<style>
+:root{
+--bg:#0f1116;
+--bg2:#161922;
+--card:#1b1f2a;
+--line:#2a2f3d;
+--txt:#e8eaf0;
+--sub:#9aa3b5;
+--acc:#ffb648;
+--acc2:#ff5f56;
+--ok:#4fd1a5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+background:var(--bg);
+color:var(--txt);
+font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+line-height:1.75;
+font-size:16px;
+-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* 页头 */
+header.site{
+position:sticky;top:0;z-index:50;
+background:rgba(15,17,22,.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);
+}
+.navbar{display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.logo .mark{width:34px;height:34px;flex:0 0 auto}
+.logo .brand{
+font-size:17px;font-weight:800;letter-spacing:.5px;
+background:linear-gradient(92deg,var(--acc),var(--acc2));
+-webkit-background-clip:text;background-clip:text;color:transparent;
+white-space:nowrap;
+}
+nav.main{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+nav.main a{
+font-size:14.5px;color:var(--sub);padding:8px 12px;border-radius:8px;
+transition:.2s;white-space:nowrap;
+}
+nav.main a:hover{color:var(--txt);background:var(--card)}
+.nav-cta{
+font-size:14px;font-weight:700;color:#161922;background:var(--acc);
+padding:9px 18px;border-radius:9px;transition:.2s;white-space:nowrap;
+}
+.nav-cta:hover{filter:brightness(1.08)}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);color:var(--txt);
+border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer}
+
+/* 首屏 */
+.hero{
+position:relative;overflow:hidden;
+border-bottom:1px solid var(--line);
+background:
+radial-gradient(900px 420px at 82% -10%,rgba(255,95,86,.18),transparent 70%),
+radial-gradient(800px 400px at 8% 0%,rgba(255,182,72,.14),transparent 70%),
+var(--bg2);
+}
+.hero-inner{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:center;padding:64px 0 60px}
+.tagline{
+display:inline-flex;align-items:center;gap:8px;
+font-size:13px;color:var(--acc);
+border:1px solid rgba(255,182,72,.4);
+background:rgba(255,182,72,.08);
+padding:5px 12px;border-radius:999px;margin-bottom:20px;
+}
+.tagline .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(79,209,165,.15)}
+h1{
+font-size:clamp(26px,3.6vw,42px);
+line-height:1.3;font-weight:900;letter-spacing:.5px;
+margin-bottom:18px;
+}
+h1 .hl{
+background:linear-gradient(92deg,var(--acc),var(--acc2));
+-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{color:var(--sub);font-size:16.5px;max-width:34em;margin-bottom:26px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{
+display:inline-flex;align-items:center;gap:8px;
+font-size:15px;font-weight:700;padding:12px 24px;border-radius:10px;
+transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:linear-gradient(92deg,var(--acc),#ff9a3c);color:#181b23}
+.btn-primary:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--txt);background:var(--card)}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+.btn[aria-disabled="true"]{opacity:.75;cursor:not-allowed}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+
+/* 数据条 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{background:var(--bg2);padding:22px 18px;text-align:center}
+.stat b{display:block;font-size:24px;font-weight:900;color:var(--acc);letter-spacing:.5px}
+.stat span{font-size:13px;color:var(--sub)}
+
+/* 通用分区 */
+section{padding:64px 0}
+.sec-head{margin-bottom:34px}
+.sec-head .kicker{
+font-size:12.5px;font-weight:700;letter-spacing:2px;color:var(--acc2);
+text-transform:uppercase;margin-bottom:10px;
+}
+h2{font-size:clamp(21px,2.4vw,28px);font-weight:800;letter-spacing:.4px}
+.sec-head p{color:var(--sub);font-size:15px;margin-top:10px;max-width:46em}
+
+/* 榜单卡片 */
+.grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+background:var(--card);border:1px solid var(--line);border-radius:14px;
+padding:22px;transition:.22s;display:flex;flex-direction:column;
+}
+.card:hover{border-color:rgba(255,182,72,.5);transform:translateY(-3px)}
+.card .row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.badge{
+font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;
+background:rgba(255,95,86,.14);color:#ff8b84;border:1px solid rgba(255,95,86,.3);
+}
+.badge.cool{background:rgba(255,182,72,.12);color:var(--acc);border-color:rgba(255,182,72,.35)}
+.badge.new{background:rgba(79,209,165,.12);color:var(--ok);border-color:rgba(79,209,165,.32)}
+.card .date{font-size:12.5px;color:var(--sub)}
+.card h3{font-size:17px;font-weight:800;margin-bottom:10px;line-height:1.5}
+.card p{font-size:14px;color:var(--sub);flex:1}
+.card .meta{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);
+display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub)}
+.card .meta em{font-style:normal;color:var(--acc);font-weight:700}
+
+/* 筛选 */
+.filter-bar{
+display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:14px 16px;margin-bottom:26px;
+}
+.filter-bar input{
+flex:1 1 220px;min-width:0;background:var(--bg2);border:1px solid var(--line);
+color:var(--txt);border-radius:8px;padding:10px 14px;font-size:14px;font-family:inherit;
+outline:none;transition:.2s;
+}
+.filter-bar input:focus{border-color:var(--acc)}
+.filter-bar .chip{
+font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;
+border:1px solid var(--line);background:var(--bg2);color:var(--sub);
+font-family:inherit;transition:.2s;
+}
+.filter-bar .chip:hover{color:var(--txt)}
+.filter-bar .chip.active{background:rgba(255,182,72,.14);border-color:var(--acc);color:var(--acc);font-weight:700}
+.result-hint{font-size:13px;color:var(--sub);margin-bottom:18px}
+.list-rows{display:flex;flex-direction:column;gap:12px}
+.row-item{
+display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;
+background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:18px 20px;transition:.2s;
+}
+.row-item:hover{border-color:rgba(255,182,72,.45)}
+.rank{
+font-size:20px;font-weight:900;color:var(--acc);text-align:center;
+font-variant-numeric:tabular-nums;
+}
+.row-item h3{font-size:16px;font-weight:800;margin-bottom:4px}
+.row-item p{font-size:13.5px;color:var(--sub)}
+.row-item .heat{font-size:13px;color:var(--acc2);font-weight:700;white-space:nowrap}
+.empty{color:var(--sub);font-size:14px;text-align:center;padding:28px;border:1px dashed var(--line);border-radius:12px}
+
+/* 说明双栏 */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.prose p{color:var(--sub);font-size:15.5px;margin-bottom:16px}
+.prose p strong{color:var(--txt)}
+.checks{list-style:none;display:flex;flex-direction:column;gap:14px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--sub)}
+.checks li svg{flex:0 0 auto;margin-top:4px}
+.checks li b{color:var(--txt);font-weight:700}
+
+/* 时间线 */
+.timeline{border-left:2px solid var(--line);padding-left:26px;display:flex;flex-direction:column;gap:26px}
+.tl-item{position:relative}
+.tl-item::before{
+content:"";position:absolute;left:-34px;top:7px;width:14px;height:14px;
+border-radius:50%;background:var(--bg);border:2px solid var(--acc);
+}
+.tl-item time{font-size:12.5px;color:var(--acc);font-weight:700;letter-spacing:.5px}
+.tl-item h3{font-size:16px;font-weight:800;margin:4px 0 6px}
+.tl-item p{font-size:14.5px;color:var(--sub)}
+
+/* CTA */
+.cta-box{
+background:linear-gradient(120deg,rgba(255,182,72,.12),rgba(255,95,86,.12)),var(--bg2);
+border:1px solid var(--line);border-radius:18px;padding:44px 36px;text-align:center;
+}
+.cta-box h2{margin-bottom:12px}
+.cta-box p{color:var(--sub);font-size:15.5px;max-width:40em;margin:0 auto 24px}
+.cta-box .btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.note{font-size:12.5px;color:#6d7688;margin-top:16px}
+
+/* 页尾 */
+footer.site{border-top:1px solid var(--line);background:var(--bg2);padding:44px 0 32px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:30px}
+.foot-grid h4{font-size:14px;font-weight:800;margin-bottom:14px;color:var(--txt)}
+.foot-grid p{font-size:13.5px;color:var(--sub);max-width:32em}
+.foot-links{display:flex;flex-direction:column;gap:9px}
+.foot-links a{font-size:13.5px;color:var(--sub);transition:.2s}
+.foot-links a:hover{color:var(--acc)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12.5px;color:#6d7688;
+display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+@media(max-width:900px){
+.hero-inner{grid-template-columns:1fr;gap:32px;padding:44px 0}
+.hero-art{order:-1;max-width:420px}
+.grid-cards{grid-template-columns:1fr 1fr}
+.stats{grid-template-columns:1fr 1fr}
+.two-col{grid-template-columns:1fr}
+.foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+.navbar{height:auto;padding:12px 0;flex-wrap:wrap;gap:12px}
+nav.main{display:none;width:100%;margin-left:0;flex-direction:column;gap:2px;
+border-top:1px solid var(--line);padding-top:10px}
+nav.main.open{display:flex}
+nav.main a{padding:10px 6px}
+.menu-toggle{display:block;margin-left:auto}
+.nav-cta{display:none}
+.grid-cards{grid-template-columns:1fr}
+.row-item{grid-template-columns:44px 1fr;gap:12px}
+.row-item .heat{grid-column:2}
+.hero-actions .btn{width:100%;justify-content:center}
+section{padding:46px 0}
+.cta-box{padding:32px 20px}
+.foot-grid{grid-template-columns:1fr}
+body{font-size:15.5px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+<div class="wrap navbar">
+<a class="logo" href="#top" aria-label="51每日大赛官网首页">
+<svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+<rect width="64" height="64" rx="14" fill="#1b1f2a" stroke="#2a2f3d"/>
+<path d="M14 44 L26 20 L34 35 L40 24 L50 44 Z" fill="#ffb648"/>
+<circle cx="47" cy="17" r="5" fill="#ff5f56"/>
+</svg>
+<span class="brand">51每日大赛官网首页</span>
+</a>
+<button class="menu-toggle" id="menuToggle" aria-label="展开导航" aria-expanded="false">☰</button>
+<nav class="main" id="mainNav" aria-label="主导航">
+<a href="#top">首页</a>
+<a href="#today">今日看点</a>
+<a href="#board">热榜</a>
+<a href="#guide">浏览说明</a>
+<a href="#update">更新节奏</a>
+<a href="#entry">进入榜单</a>
+</nav>
+<a class="nav-cta" href="#entry">看今日榜</a>
+</div>
+</header>
+
+<main id="top">
+
+<!-- 首屏 -->
+<section class="hero" style="padding:0">
+<div class="wrap hero-inner">
+<div>
+<span class="tagline"><span class="dot"></span>每日更新 · 热点聚合</span>
+<h1>51每日大赛官网首页</h1>
+<p class="lead">这里是 51每日大赛官网首页 的内容入口。每天把当日热度较高的话题条目集中呈现，按日期归档，方便你快速看清哪几条被讨论得最多、内容围绕哪些方向展开。榜单只做呈现与归类，不代替你的判断。</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#board">浏览今日热榜
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</a>
+<a class="btn btn-ghost" href="#today">先看今日看点</a>
+<a class="btn btn-ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none">下载
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+</a>
+</div>
+</div>
+<div class="hero-art" aria-hidden="true">
+<svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+<rect width="420" height="320" rx="16" fill="#161922"/>
+<g opacity="0.9">
+<rect x="24" y="24" width="140" height="10" rx="5" fill="#ffb648"/>
+<rect x="24" y="46" width="220" height="8" rx="4" fill="#2a2f3d"/>
+<rect x="24" y="62" width="180" height="8" rx="4" fill="#2a2f3d"/>
+</g>
+<g>
+<rect x="24" y="92" width="372" height="52" rx="10" fill="#1b1f2a" stroke="#2a2f3d"/>
+<circle cx="52" cy="118" r="13" fill="#ff5f56" opacity="0.85"/>
+<rect x="78" y="108" width="150" height="9" rx="4" fill="#3a4152"/>
+<rect x="78" y="124" width="100" height="7" rx="3" fill="#2a2f3d"/>
+<rect x="330" y="110" width="46" height="16" rx="8" fill="#ffb648" opacity="0.8"/>
+</g>
+<g>
+<rect x="24" y="156" width="372" height="52" rx="10" fill="#1b1f2a" stroke="#2a2f3d"/>
+<circle cx="52" cy="182" r="13" fill="#ffb648" opacity="0.85"/>
+<rect x="78" y="172" width="170" height="9" rx="4" fill="#3a4152"/>
+<rect x="78" y="188" width="120" height="7" rx="3" fill="#2a2f3d"/>
+<rect x="330" y="174" width="46" height="16" rx="8" fill="#4fd1a5" opacity="0.75"/>
+</g>
+<g>
+<rect x="24" y="220" width="372" height="52" rx="10" fill="#1b1f2a" stroke="#2a2f3d"/>
+<circle cx="52" cy="246" r="13" fill="#4fd1a5" opacity="0.85"/>
+<rect x="78" y="236" width="130" height="9" rx="4" fill="#3a4152"/>
+<rect x="78" y="252" width="90" height="7" rx="3" fill="#2a2f3d"/>
+<rect x="330" y="238" width="46" height="16" rx="8" fill="#ff5f56" opacity="0.75"/>
+</g>
+<rect x="24" y="288" width="372" height="1" fill="#2a2f3d"/>
+</svg>
+</div>
+</div>
+</section>
+
+<!-- 数据条 -->
+<div class="stats" aria-label="站点概况">
+<div class="stat"><b>每日</b><span>更新节奏</span></div>
+<div class="stat"><b>按日期</b><span>归档浏览</span></div>
+<div class="stat"><b>多方向</b><span>内容分类</span></div>
+<div class="stat"><b>榜单</b><span>热度排序</span></div>
+</div>
+
+<!-- 今日看点 -->
+<section id="today">
+<div class="wrap">
+<div class="sec-head">
+<div class="kicker">Today</div>
+<h2>今日看点：三条主线先看懂</h2>
+<p>打开 51每日大赛官网首页，最先看到的是当日的三条主线。每条只保留话题方向、讨论热度与大致走向，细节留在榜单条目里。</p>
+</div>
+<div class="grid-cards">
+<article class="card">
+<div class="row"><span class="badge">高热</span><span class="date">今日更新</span></div>
+<h3>话题方向集中，讨论密度上升</h3>
+<p>当日热度靠前的条目集中在少数几个方向，条目的讨论密度明显高于往常。适合先看整体排序，再挑选自己关心的方向深入。</p>
+<div class="meta"><span>条目类型：<em>话题聚合</em></span><span>热度：高</span></div>
+</article>
+<article class="card">
+<div class="row"><span class="badge cool">持续</span><span class="date">近几日</span></div>
+<h3>往日条目仍在被翻看</h3>
+<p>部分往日条目仍保持阅读量，说明讨论没有随日期切换而结束。按日期回看，可以还原一条内容是如何被逐步放大的。</p>
+<div class="meta"><span>条目类型：<em>日期归档</em></span><span>热度：中高</span></div>
+</article>
+<article class="card">
+<div class="row"><span class="badge new">新增</span><span class="date">今日新增</span></div>
+<h3>新条目进入榜单，位置待观察</h3>
+<p>新增条目刚进入榜单，排序位置还会随阅读量变化。建议隔一段时间再回来看一次，比较前后差异更有参考价值。</p>
+<div class="meta"><span>条目类型：<em>新进榜</em></span><span>热度：待观察</span></div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- 热榜 + 筛选 -->
+<section id="board" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="sec-head">
+<div class="kicker">Ranking</div>
+<h2>热榜浏览与筛选</h2>
+<p>下面的条目按热度排列，可按关键词搜索或按方向筛选。筛选只作用于当前列表，刷新页面后恢复完整榜单。</p>
+</div>
+
+<div class="filter-bar">
+<input type="search" id="searchInput" placeholder="输入关键词，如 话题、爆料、日期…" aria-label="搜索榜单条目">
+<button class="chip active" data-filter="all" type="button">全部</button>
+<button class="chip" data-filter="话题" type="button">话题</button>
+<button class="chip" data-filter="爆料" type="button">爆料</button>
+<button class="chip" data-filter="榜单" type="button">榜单</button>
+</div>
+<p class="result-hint" id="resultHint">当前显示全部条目</p>
+
+<div class="list-rows" id="listRows">
+<article class="row-item" data-cat="话题">
+<div class="rank">01</div>
+<div><h3>当日话题热度集中，条目排序变化明显</h3><p>讨论集中在少数方向，排序相比昨日有小幅调整，适合作为当天的第一站。</p></div>
+<div class="heat">热度 ↑</div>
+</article>
+<article class="row-item" data-cat="爆料">
+<div class="rank">02</div>
+<div><h3>爆料类条目增加，内容来源需自行核对</h3><p>爆料条目数量上升，站点只做归类呈现，具体说法请以原始出处为准。</p></div>
+<div class="heat">热度 ↑</div>
+</article>
+<article class="row-item" data-cat="榜单">
+<div class="rank">03</div>
+<div><h3>榜单按日期归档，回看更方便</h3><p>每一天的榜单独立保留，切换日期即可对照前后变化，便于观察走向。</p></div>
+<div class="heat">热度 →</div>
+</article>
+<article class="row-item" data-cat="话题">
+<div class="rank">04</div>
+<div><h3>话题标签整合，同一方向不再分散</h3><p>相近方向的条目被归到同一标签下，减少重复翻找，浏览路径更短。</p></div>
+<div class="heat">热度 →</div>
+</article>
+<article class="row-item" data-cat="爆料">
+<div class="rank">05</div>
+<div><h3>旧条目仍被翻看，讨论周期拉长</h3><p>部分往日条目阅读量回升，说明讨论没有随日期切换立即结束。</p></div>
+<div class="heat">热度 ↓</div>
+</article>
+</div>
+<div class="empty" id="emptyState" hidden>没有匹配的条目，换个关键词或切回“全部”。</div>
+</div>
+</section>
+
+<!-- 浏览说明 -->
+<section id="guide">
+<div class="wrap">
+<div class="sec-head">
+<div class="kicker">How to read</div>
+<h2>怎么浏览这份榜单</h2>
+<p>51每日大赛官网首页 把浏览路径压缩成三步：先看今日主线，再看热榜排序，最后按日期回看。下面说明每一步该关注什么。</p>
+</div>
+<div class="two-col">
+<div class="prose">
+<p><strong>第一步，看主线。</strong>今日看点只保留三条，作用是让你在三十秒内知道今天讨论集中在哪几个方向。如果三条里没有你关心的方向，直接进热榜即可。</p>
+<p><strong>第二步，看排序。</strong>热榜按热度排列，位置靠前不代表内容更可靠，只代表被看得更多。遇到爆料类条目，建议先找到原始出处，再判断说法是否成立。</p>
+<p><strong>第三步，按日期回看。</strong>每一天的榜单都会独立保留下来，切换日期就能对照同一条目前后的位置变化。这种对照比单看一天的排序更有信息量。</p>
+<p>需要说明的是，51每日大赛官网首页 是内容聚合入口，条目由榜单归类呈现，站点不对条目中的具体说法作背书。看到与事实有出入的内容，以原始出处为准。</p>
+</div>
+<ul class="checks">
+<li>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4fd1a5" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+<span><b>按日期归档</b>：每天一份，可对照前后变化。</span>
+</li>
+<li>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4fd1a5" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+<span><b>按方向筛选</b>：话题、爆料、榜单三类分开看。</span>
+</li>
+<li>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4fd1a5" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+<span><b>关键词搜索</b>：输入方向词或日期快速定位条目。</span>
+</li>
+<li>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4fd1a5" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+<span><b>热度只作参考</b>：排序说明关注度，不说明真实性。</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- 更新节奏 -->
+<section id="update" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="sec-head">
+<div class="kicker">Rhythm</div>
+<h2>更新节奏与内容范围</h2>
+<p>51每日大赛官网首页 的内容以“日”为单位组织。一天之内条目排序会随阅读量变化，跨天则形成可对照的序列。</p>
+</div>
+<div class="timeline">
+<div class="tl-item">
+<time>清晨</time>
+<h3>整理昨日遗留条目</h3>
+<p>把昨日热度未散的条目保留在新一天的榜单里，避免讨论被日期切换打断。</p>
+</div>
+<div class="tl-item">
+<time>白天</time>
+<h3>新条目进入，排序开始变动</h3>
+<p>新增条目进入榜单，位置随阅读量上升或下降。此时看排序，能看到正在形成的方向。</p>
+</div>
+<div class="tl-item">
+<time>入夜</time>
+<h3>当日排序趋于稳定</h3>
+<p>当日主线基本确定，适合做一次完整浏览，把关心的方向挑出来。</p>
+</div>
+<div class="tl-item">
+<time>跨天</time>
+<h3>归档为独立日期页</h3>
+<p>当日榜单归档保留，之后可以随时回到某一天，对照同一条目的前后位置。</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 入口 -->
+<section id="entry">
+<div class="wrap">
+<div class="cta-box">
+<h2>从今日榜单开始</h2>
+<p>51每日大赛官网首页 的核心入口就是今日热榜。先看排序，再按方向筛选，最后按日期回看，这三步已经覆盖大多数浏览需求。</p>
+<div class="btn-row">
+<a class="btn btn-primary" href="#board">进入今日热榜</a>
+<a class="btn btn-ghost" href="#today">回顾今日看点</a>
+<a class="btn btn-ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none">下载</a>
+</div>
+<p class="note">下载入口暂未开放，开放后在此处提供。</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<h4>51每日大赛官网首页</h4>
+<p>每日聚合热点条目，按日期归档，按方向分类。榜单只呈现关注度，具体说法请回到原始出处核对。</p>
+</div>
+<div>
+<h4>站内导航</h4>
+<div class="foot-links">
+<a href="#today">今日看点</a>
+<a href="#board">热榜与筛选</a>
+<a href="#guide">浏览说明</a>
+<a href="#update">更新节奏</a>
+</div>
+</div>
+<div>
+<h4>浏览提示</h4>
+<div class="foot-links">
+<a href="#entry">进入今日榜单</a>
+<a href="#guide">如何核对条目</a>
+<a href="#update">了解更新周期</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© 51每日大赛官网首页 · 内容聚合入口</span>
+<span>条目仅作归类呈现，不代表站点立场</span>
+</div>
+</div>
+</footer>
+
+<script>
+(function(){
+var toggle=document.getElementById('menuToggle');
+var nav=document.getElementById('mainNav');
+if(toggle&&nav){
+toggle.addEventListener('click',function(){
+var open=nav.classList.toggle('open');
+toggle.setAttribute('aria-expanded',open?'true':'false');
+});
+nav.addEventListener('click',function(e){
+if(e.target.tagName==='A'){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+});
+}
+
+var input=document.getElementById('searchInput');
+var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+var rows=Array.prototype.slice.call(document.querySelectorAll('#listRows .row-item'));
+var hint=document.getElementById('resultHint');
+var empty=document.getElementById('emptyState');
+var activeFilter='all';
+
+function apply(){
+var q=(input?input.value.trim():'').toLowerCase();
+var shown=0;
+rows.forEach(function(row){
+var cat=row.getAttribute('data-cat')||'';
+var text=row.textContent.toLowerCase();
+var okCat=(activeFilter==='all'||cat===activeFilter);
+var okText=(!q||text.indexOf(q)>-1);
+var show=okCat&&okText;
+row.style.display=show?'':'none';
+if(show)shown++;
+});
+if(hint){hint.textContent=shown?('当前显示 '+shown+' 条'+(activeFilter==='all'?'全部':'「'+activeFilter+'」')+'条目'):'没有匹配的条目';}
+if(empty){empty.hidden=shown>0;}
+}
+
+if(input){input.addEventListener('input',apply);}
+chips.forEach(function(chip){
+chip.addEventListener('click',function(){
+chips.forEach(function(c){c.classList.remove('active');});
+chip.classList.add('active');
+activeFilter=chip.getAttribute('data-filter')||'all';
+apply();
+});
+});
+apply();
+})();
+</script>
+
+</body>
+          </html>
