@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51大乱斗yandex-大乱斗yandex入口_51大乱斗热点合集</title>
+<meta name="description" content="51大乱斗yandex 汇集大乱斗热点内容与入口导航，按主题分区呈现最新动态、热门合集与常见疑问，方便访客快速找到想看的内容。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141820'/%3E%3Cpath d='M18 22h10l4 12 4-12h10l-9 22H27z' fill='%23ff6a3d'/%3E%3Ccircle cx='48' cy='20' r='5' fill='%23ffc94d'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0f1218;
+  --bg-soft:#151a23;
+  --line:rgba(255,255,255,.09);
+  --ink:#eef1f6;
+  --ink-dim:#a3adbd;
+  --accent:#ff6a3d;
+  --accent-2:#ffc94d;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+img,svg{display:block;max-width:100%}
+
+/* header */
+header.site{
+  position:sticky;top:0;z-index:20;
+  background:rgba(15,18,24,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;gap:28px;
+  min-height:68px;flex-wrap:wrap;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:.3px;white-space:nowrap}
+.logo .mark{width:34px;height:34px;flex:none}
+.nav ul{display:flex;gap:22px;list-style:none;font-size:14.5px;color:var(--ink-dim);flex-wrap:wrap}
+.nav ul a:hover{color:var(--accent-2)}
+.nav .cta{
+  margin-left:auto;background:linear-gradient(135deg,var(--accent),#ff8a4d);
+  color:#1a1005;font-weight:700;font-size:14px;
+  padding:9px 18px;border-radius:999px;white-space:nowrap;
+}
+.nav .cta:hover{filter:brightness(1.08)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{
+  content:"";position:absolute;inset:-40% -10% auto -10%;height:520px;
+  background:radial-gradient(600px 300px at 20% 30%,rgba(255,106,61,.22),transparent 70%),
+             radial-gradient(520px 280px at 80% 10%,rgba(255,201,77,.14),transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;padding:64px 0 56px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,106,61,.4);background:rgba(255,106,61,.1);
+  color:var(--accent-2);font-size:13px;padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block}
+h1{
+  font-size:clamp(30px,4.6vw,46px);
+  line-height:1.22;letter-spacing:.5px;font-weight:900;
+  word-break:break-word;
+}
+h1 .hl{
+  background:linear-gradient(120deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{margin-top:18px;color:var(--ink-dim);font-size:16px;max-width:36em}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:999px;font-weight:700;font-size:15px;
+  border:1px solid transparent;transition:.2s;
+}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#ff8a4d);color:#1a1005}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:rgba(255,201,77,.5);color:var(--accent-2)}
+.btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}
+.hero-art{position:relative}
+
+/* stats strip */
+.stats{border-bottom:1px solid var(--line);background:var(--bg-soft)}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.stat{background:var(--bg-soft);padding:22px 18px}
+.stat b{display:block;font-size:22px;color:var(--accent-2);letter-spacing:.5px}
+.stat span{font-size:13px;color:var(--ink-dim)}
+
+/* sections */
+section{padding:56px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.sec-head h2{font-size:clamp(21px,2.6vw,27px);font-weight:800;letter-spacing:.5px}
+.sec-head .sub{color:var(--ink-dim);font-size:14px}
+.sec-head::before{
+  content:"";width:6px;height:24px;border-radius:4px;
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));align-self:center;
+}
+.divider{height:1px;background:var(--line)}
+
+/* hot cards */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;transition:.22s;display:flex;flex-direction:column;gap:10px;
+}
+.card:hover{border-color:rgba(255,106,61,.45);transform:translateY(-3px)}
+.card .tag{font-size:12px;color:var(--accent-2);letter-spacing:1px}
+.card h3{font-size:17.5px;font-weight:800;line-height:1.45}
+.card p{font-size:14px;color:var(--ink-dim);flex:1}
+.card .meta{font-size:12.5px;color:#79839a;display:flex;justify-content:space-between;gap:10px;border-top:1px dashed var(--line);padding-top:10px}
+
+/* two-col content */
+.split{display:grid;grid-template-columns:1.4fr .9fr;gap:36px;align-items:start}
+.prose p{color:#c6cddb;font-size:15.5px;margin-bottom:16px}
+.prose p strong{color:var(--ink)}
+.prose h3{font-size:18px;margin:6px 0 12px;font-weight:800;color:var(--accent-2)}
+.aside{
+  background:linear-gradient(180deg,rgba(255,106,61,.1),rgba(21,26,35,.4));
+  border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+}
+.aside h3{font-size:16.5px;margin-bottom:14px}
+.aside ol{list-style:none;counter-reset:n;display:flex;flex-direction:column;gap:12px}
+.aside ol li{counter-increment:n;display:flex;gap:12px;font-size:14.2px;color:#c6cddb}
+.aside ol li::before{
+  content:counter(n,decimal-leading-zero);
+  color:var(--accent);font-weight:800;font-size:13px;flex:none;
+}
+.aside .note{margin-top:18px;font-size:12.5px;color:#79839a;border-top:1px dashed var(--line);padding-top:12px}
+
+/* list rows */
+.rows{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.row{
+  background:var(--bg-soft);padding:18px 22px;display:grid;
+  grid-template-columns:86px 1fr auto;gap:18px;align-items:center;
+}
+.row:hover{background:#1a2029}
+.row .k{color:var(--accent-2);font-size:13px;letter-spacing:1px;font-weight:700}
+.row h3{font-size:15.5px;font-weight:700}
+.row p{font-size:13.5px;color:var(--ink-dim);margin-top:4px}
+.row .go{font-size:13px;color:var(--accent);white-space:nowrap}
+
+/* faq */
+.faq{display:flex;flex-direction:column;gap:12px}
+details{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:16px 20px;
+}
+details[open]{border-color:rgba(255,201,77,.35)}
+summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:20px;font-weight:400;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;font-size:14.2px;color:var(--ink-dim)}
+
+/* footer */
+footer.site{border-top:1px solid var(--line);background:var(--bg-soft);padding:40px 0 30px;font-size:13.5px;color:var(--ink-dim)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:24px}
+.foot-grid h4{font-size:14px;color:var(--ink);margin-bottom:12px;font-weight:800}
+.foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot-grid a:hover{color:var(--accent-2)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#79839a}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;padding:44px 0 40px;gap:30px}
+  .hero-art{order:-1;max-width:340px}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav{gap:14px;padding:12px 0}
+  .nav ul{order:3;width:100%;gap:16px;font-size:13.5px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .nav .cta{margin-left:auto;font-size:13px;padding:8px 14px}
+  .grid-3{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:6px}
+  .row .go{display:none}
+  .foot-grid{grid-template-columns:1fr}
+  section{padding:42px 0}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1b2129"/>
+        <path d="M18 22h10l4 12 4-12h10l-9 22H27z" fill="#ff6a3d"/>
+        <circle cx="48" cy="20" r="5" fill="#ffc94d"/>
+      </svg>
+      <span>51大乱斗yandex</span>
+    </a>
+    <ul>
+      <li><a href="#hot">今日热点</a></li>
+      <li><a href="#about">内容说明</a></li>
+      <li><a href="#topics">专题合集</a></li>
+      <li><a href="#faq">常见疑问</a></li>
+    </ul>
+    <a class="cta" href="#hot">看热点</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="badge"><i></i>大乱斗话题聚合 · 今日更新</span>
+        <h1>51大乱斗yandex</h1>
+        <p class="lead">这里把 51大乱斗yandex 相关的热点条目、话题合集与入口导航集中在一页呈现。先看今日焦点，再按专题往下读，几分钟就能把近期被反复讨论的内容过一遍。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#hot">进入今日热点</a>
+          <a class="btn btn-ghost" href="#topics">浏览专题合集</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 300" role="presentation">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff6a3d" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#ffc94d" stop-opacity=".55"/>
+            </linearGradient>
+          </defs>
+          <rect x="14" y="26" width="392" height="248" rx="20" fill="#151a23" stroke="rgba(255,255,255,.1)"/>
+          <circle cx="330" cy="86" r="40" fill="url(#g1)" opacity=".28"/>
+          <circle cx="330" cy="86" r="18" fill="url(#g1)"/>
+          <rect x="46" y="70" width="150" height="12" rx="6" fill="#ff6a3d"/>
+          <rect x="46" y="96" width="230" height="9" rx="4.5" fill="rgba(255,255,255,.28)"/>
+          <rect x="46" y="114" width="190" height="9" rx="4.5" fill="rgba(255,255,255,.18)"/>
+          <rect x="46" y="150" width="120" height="86" rx="12" fill="rgba(255,106,61,.16)" stroke="rgba(255,106,61,.4)"/>
+          <rect x="182" y="150" width="120" height="86" rx="12" fill="rgba(255,201,77,.12)" stroke="rgba(255,201,77,.3)"/>
+          <rect x="318" y="150" width="60" height="86" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)"/>
+          <path d="M74 196l16-22 16 22z" fill="#ff6a3d"/>
+          <circle cx="242" cy="186" r="12" fill="none" stroke="#ffc94d" stroke-width="3"/>
+          <rect x="232" y="204" width="20" height="4" rx="2" fill="#ffc94d"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap stats-inner">
+      <div class="stat"><b>每日</b><span>热点条目滚动更新</span></div>
+      <div class="stat"><b>4 个</b><span>主题合集分区</span></div>
+      <div class="stat"><b>1 页</b><span>入口导航集中查看</span></div>
+      <div class="stat"><b>纯静态</b><span>无需登录即可阅读</span></div>
+    </div>
+  </div>
+
+  <section id="hot">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>今日热点</h2>
+        <span class="sub">按讨论热度排列的 51大乱斗yandex 相关条目</span>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="tag">焦点</span>
+          <h3>大乱斗话题为何集中爆发</h3>
+          <p>同一时段内多条内容被反复转发，形成短周期的话题峰值。这里把讨论集中的方向做了归纳，方便快速判断哪一类内容值得跟进。</p>
+          <div class="meta"><span>热点观察</span><span>持续更新</span></div>
+        </article>
+        <article class="card">
+          <span class="tag">入口</span>
+          <h3>51大乱斗yandex 入口怎么找</h3>
+          <p>不少访客的搜索意图就是找入口。本页把导航集中放在页头与首屏，点击即可跳到对应分区，减少来回翻找的时间。</p>
+          <div class="meta"><span>导航说明</span><span>本页锚点</span></div>
+        </article>
+        <article class="card">
+          <span class="tag">合集</span>
+          <h3>近期被反复提及的条目</h3>
+          <p>把零散出现的条目按主题归类，保留原始表述范围，不做额外延伸。阅读时可直接对照合集内的小标题定位内容。</p>
+          <div class="meta"><span>内容归类</span><span>按主题</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section id="about">
+    <div class="wrap split">
+      <div class="prose">
+        <div class="sec-head" style="margin-bottom:18px"><h2>内容说明</h2></div>
+        <p><strong>51大乱斗yandex</strong> 这个说法由两部分组成：一是指向“大乱斗”这一热点内容类别，二是指向 yandex 这一搜索入口。合在一起看，访问者的核心需求通常是两件事——知道最近在讨论什么，以及从哪个入口进去看。</p>
+        <p>因此本页的组织方式也围绕这两点：上半部分给出当日热点与话题方向，中间部分提供专题合集，下半部分用问答形式解释入口与阅读方式。页面不做跳转堆叠，重要内容直接写在静态页面里，打开即可阅读。</p>
+        <h3>阅读顺序建议</h3>
+        <p>如果时间有限，先看首屏下方的热点卡片，了解当下讨论集中在哪几类；再往下看专题合集，按兴趣选一两个方向深入；最后浏览常见疑问，确认入口与更新节奏。整个过程不需要注册，也不需要额外跳转。</p>
+        <p>需要说明的是，热点内容本身变化很快，本页保留的是条目层面的归纳，不涉及具体细节的确认。遇到表述不一致的情况，以原始来源为准。51大乱斗yandex 作为页面主题贯穿全站，各分区的措辞与栏目命名都围绕它展开，避免出现主题漂移。</p>
+      </div>
+      <aside class="aside">
+        <h3>本页怎么用</h3>
+        <ol>
+          <li>页头导航直达热点、说明、合集与疑问四个分区。</li>
+          <li>首屏按钮优先引导到今日热点，适合第一次访问。</li>
+          <li>专题合集按主题分组，逐条阅读比通读更省时间。</li>
+          <li>常见疑问里补充了入口与更新相关的说明。</li>
+        </ol>
+        <p class="note">页面内容为静态整理，条目方向会随讨论变化调整，具体表述以原始来源为准。</p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section id="topics">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>专题合集</h2>
+        <span class="sub">51大乱斗yandex 相关方向的分类索引</span>
+      </div>
+      <div class="rows">
+        <a class="row" href="#hot">
+          <span class="k">01 / 热点</span>
+          <span>
+            <h3>话题峰值与讨论方向</h3>
+            <p>记录短期内被集中讨论的类别，帮助判断内容热度所处的阶段。</p>
+          </span>
+          <span class="go">查看 →</span>
+        </a>
+        <a class="row" href="#about">
+          <span class="k">02 / 入口</span>
+          <span>
+            <h3>yandex 入口与导航路径</h3>
+            <p>说明页面内导航的对应关系，以及从搜索进入后如何快速定位内容。</p>
+          </span>
+          <span class="go">查看 →</span>
+        </a>
+        <a class="row" href="#faq">
+          <span class="k">03 / 问答</span>
+          <span>
+            <h3>常见疑问与更新节奏</h3>
+            <p>汇总访问者最常提出的几个问题，给出范围明确的回答。</p>
+          </span>
+          <span class="go">查看 →</span>
+        </a>
+        <a class="row" href="#top">
+          <span class="k">04 / 总览</span>
+          <span>
+            <h3>回到页面顶部重新浏览</h3>
+            <p>需要从头再看一遍时，可回到首屏，按热点、说明、合集的顺序阅读。</p>
+          </span>
+          <span class="go">返回 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>常见疑问</h2>
+        <span class="sub">关于 51大乱斗yandex 的阅读与入口</span>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>51大乱斗yandex 这一页主要提供什么？</summary>
+          <p>本页是一个静态聚合页，把大乱斗相关的热点条目、专题合集与入口说明集中呈现。它不承载具体内容的转载，只做分类与索引，方便访客先了解方向再决定看什么。</p>
+        </details>
+        <details>
+          <summary>页面内容多久更新一次？</summary>
+          <p>热点条目按日整理，专题合集在方向发生明显变化时调整。由于讨论本身节奏较快，页面保留的是阶段性归纳，不承诺逐条同步。</p>
+        </details>
+        <details>
+          <summary>需要登录或安装额外工具吗？</summary>
+          <p>不需要。页面为单文件静态结构，打开浏览器即可阅读，导航全部指向本页已有的锚点分区。</p>
+        </details>
+        <details>
+          <summary>为什么强调 yandex 这个词？</summary>
+          <p>因为不少访问者是通过搜索入口找到这类内容的，入口本身就是需求的一部分。把 51大乱斗yandex 作为整体主题表达，可以同时覆盖“看什么”和“从哪进”两个问题。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>51大乱斗yandex</h4>
+        <p style="max-width:30em">大乱斗热点聚合与入口导航页面，按主题分区整理条目，重要内容直接呈现在静态页面中，方便快速浏览与定位。</p>
+      </div>
+      <div>
+        <h4>分区导航</h4>
+        <ul>
+          <li><a href="#hot">今日热点</a></li>
+          <li><a href="#about">内容说明</a></li>
+          <li><a href="#topics">专题合集</a></li>
+          <li><a href="#faq">常见疑问</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>页面入口</h4>
+        <ul>
+          <li><a href="#hot">热点直达</a></li>
+          <li><a href="#top">回到顶部</a></li>
+          <li><a href="#topics">合集索引</a></li>
+          <li><a href="#">下载（暂未开放）</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 51大乱斗yandex · 内容为静态整理，以原始来源为准</span>
+      <span>页面主题：大乱斗热点与入口导航</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
